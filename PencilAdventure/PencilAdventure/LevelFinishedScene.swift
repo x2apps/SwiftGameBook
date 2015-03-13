@@ -54,7 +54,9 @@ class LevelFinishedScene: PaperScene {
     convertToSketch()
   }
   
-  override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  // Convert to 8.3
+  // override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
     for touch: AnyObject in touches {
       let node = self.nodeAtPoint(touch.locationInNode(self))
       if node.name == OKButtonName || node.parent?.name == OKButtonName {

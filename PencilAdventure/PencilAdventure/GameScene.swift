@@ -115,7 +115,8 @@ public class GameScene : PaperScene, SKPhysicsContactDelegate, GameProtocol {
     // then remove the accessory type from the name and setup that accessory
     // type appropriately. That might include collision/contact masks,
     // z-position and/or other properties.
-    for child in self.children as [SKNode] {
+    for child in self.children as! [SKNode] {
+      
       if var sprite = child as? SKSpriteNode {
         
         // If the sprite doesn't have a name, we have no work to do here
@@ -201,7 +202,7 @@ public class GameScene : PaperScene, SKPhysicsContactDelegate, GameProtocol {
   
   private func setupMovingSprites() {
     // Find our sprites at z<=0 (this will be all of our level items)
-    for child in self.children as [SKNode] {
+    for child in self.children as! [SKNode] {
       if let sprite = child as? SKSpriteNode {
         if sprite.zPosition > SceneBackgroundZPosition && sprite.zPosition <= levelItemZPosition  {
           movingPlatformFromLevel(sprite)
@@ -212,7 +213,9 @@ public class GameScene : PaperScene, SKPhysicsContactDelegate, GameProtocol {
   
   public override func update(currentTime: CFTimeInterval) {}
   
-  public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  // Convert 8.3
+  // public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
     // only jump when steve is running
     if (steveTheSprite.heroState == HeroState.Run) {
       // touch to jump

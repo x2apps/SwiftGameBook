@@ -78,9 +78,18 @@ class ImageTools {
     
     // Here is our bitmap array
     var data = [UInt8](count: heightPix * stride, repeatedValue: UInt8(0))
+    
+    // Covert 8.3
+    // let colorSpace = CGColorSpaceCreateDeviceRGB()
     let colorSpace = CGColorSpaceCreateDeviceRGB()
+    
     let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue | CGBitmapInfo.ByteOrderDefault.rawValue)
-    let contextRef = CGBitmapContextCreate(&data, UInt(widthPix), UInt(heightPix), 8, UInt(stride), colorSpace, bitmapInfo);
+    
+    // Convert 8.3
+    //let contextRef = CGBitmapContextCreate(&data, UInt(widthPix), UInt(heightPix), 8, UInt(stride), colorSpace, bitmapInfo);
+    let contextRef = CGBitmapContextCreate(&data, Int(widthPix), Int(heightPix), Int(8), Int(stride), colorSpace!, bitmapInfo)
+    
+    
     let cgImage = image.CGImage;
     let rect = CGRect(x: 0, y: 0, width: CGFloat(widthPix), height: CGFloat(heightPix));
     CGContextDrawImage(contextRef, rect, cgImage);
@@ -339,7 +348,7 @@ class ImageTools {
     
     let filename = name + ".vcache.plist"
     var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-    var documentsDirectoryPath = paths[0] as String
+    var documentsDirectoryPath = paths[0] as! String
     var filePath = documentsDirectoryPath.stringByAppendingPathComponent(filename)
     
     if !pathArrayArr._bridgeToObjectiveC().writeToFile(filePath, atomically: true) {
@@ -350,7 +359,7 @@ class ImageTools {
   class func getPathArrayFilename(name: String) -> String {
     let filename = name + ".vcache.plist"
     var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-    var documentsDirectoryPath = paths[0] as String
+    var documentsDirectoryPath = paths[0] as! String
     return documentsDirectoryPath.stringByAppendingPathComponent(filename)
   }
   
@@ -368,7 +377,7 @@ class ImageTools {
     }
     
     var pathArray: [[CGPoint]] = []
-    for arr in pathArrayArr as [ [ [NSNumber] ] ] {
+    for arr in pathArrayArr as! [ [ [NSNumber] ] ] {
       var path: [CGPoint] = []
       for value in arr as [ [NSNumber] ] {
         var x = CGFloat(value[0].floatValue)

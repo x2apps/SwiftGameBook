@@ -113,6 +113,8 @@ public class PaperScene : SKScene {
   public func convertToSketch()
   {
     // Attach our sketch nodes to all sprites
+    
+    // DEBUG This Blows up
     SketchRender.attachSketchNodes(self, progress: progressNode)
     
     // Setup a timer for the update
@@ -147,7 +149,8 @@ public class PaperScene : SKScene {
     var sketchSprites: [SKSpriteNode] = []
     
     // Find our sketch sprites
-    for child in node.children as [SKNode] {
+    for child in node.children as! [SKNode] {
+      
       // Depth-first traversal
       //
       // Note that we don't bother to traverse into our sketch sprites

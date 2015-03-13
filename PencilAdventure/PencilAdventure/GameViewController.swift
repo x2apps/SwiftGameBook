@@ -10,7 +10,7 @@ class GameViewController: UIViewController {
     super.viewDidLoad()
     
     // Setup our SpriteKit view.
-    let view = self.view as SKView
+    let view = self.view as! SKView
     let startScene = HomeScene()
     view.presentScene(startScene)
     
@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
   }
   
   @IBAction func startGame (sender: AnyObject) {
-    let view = self.view as SKView
+    let view = self.view as! SKView
     
     // Create and present our level scene.
     let levelScene = LevelSelectScene(size: CGSize(width: view.frame.width, height: view.frame.height))

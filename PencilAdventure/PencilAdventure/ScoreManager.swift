@@ -6,7 +6,7 @@ public class ScoreManager {
   
   class func saveScore(score: Int, forLevel level: Int) {
     var leaderboard = NSUserDefaults.standardUserDefaults().objectForKey("LeaderBoard") as? NSDictionary ?? NSMutableDictionary()
-    var leaderboardMDict: NSMutableDictionary = leaderboard.mutableCopy() as NSMutableDictionary
+    var leaderboardMDict: NSMutableDictionary = leaderboard.mutableCopy() as! NSMutableDictionary
     
     if let highestScore = leaderboard[level] as? Int {
       leaderboardMDict.setValue(highestScore < score ? score : highestScore, forKey: "Level \(level)")
@@ -20,7 +20,7 @@ public class ScoreManager {
     var localPlayer = GKLocalPlayer.localPlayer()
     localPlayer.authenticateHandler = {(viewController : UIViewController!, error : NSError!) -> Void in
       if viewController != .None {
-        let appdelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appdelegate.window?.rootViewController?.presentViewController(viewController, animated: true, completion: nil)
       } else {
         if localPlayer.authenticated {

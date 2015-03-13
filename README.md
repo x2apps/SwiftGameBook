@@ -1,3 +1,10 @@
+Convert to Xcode 6.3 beta 3
+===========================
+Converted to Xcode 6.3 beta 3 and running in simulator.
+
+X2Apps
+
+
 SwiftGameBook
 =============
 # About our game

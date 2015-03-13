@@ -84,7 +84,7 @@ class SketchRender {
   internal class func countSketchNodes(node: SKNode) -> Int {
     var totalSketchNodes = 0
     
-    for child in node.children as [SKNode] {
+    for child in node.children as! [SKNode] {
       // Let's do depth-first traversal so that we don't end up traversing the children we're about to add
       totalSketchNodes += countSketchNodes(child)
       
@@ -121,7 +121,8 @@ class SketchRender {
     let atlas = SKTextureAtlas(named: "Sprites")
     let transparentTexture = atlas.textureNamed("transparent")
 				
-    for child in node.children as [SKNode] {
+    for child in node.children as! [SKNode] {
+      
       // Let's do depth-first traversal so that we don't end up traversing the children we're about to add
       self.attachSketchNodes(child, progress: progress, totalNodes: totalSketchNodes)
       

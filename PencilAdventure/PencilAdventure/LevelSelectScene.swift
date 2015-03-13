@@ -36,6 +36,7 @@ class LevelSelectScene : PaperScene {
     addLevelSelectAndHighScoreNodes()
     
     // Let's draw our scene as a sketch
+    // BUG HERE?????????????????????????????
     convertToSketch()
   }
   
@@ -184,7 +185,9 @@ class LevelSelectScene : PaperScene {
     }
   }
   
-  override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  // Convert 8.3
+  // override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
     for touch: AnyObject in touches {
       let node = self.nodeAtPoint(touch.locationInNode(self))
       if node.name == "L1-enabled" || node.parent?.name == "L1-enabled" {

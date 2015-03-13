@@ -10,7 +10,7 @@ extension SKNode {
     let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData!)
     
     archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-    let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as GameScene
+    let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
     archiver.finishDecoding()
     
     // Set the scene's scale mode to maintain aspect, but fill the screen (AspectFill)
@@ -38,7 +38,7 @@ extension SKNode {
   }
   
   class func cleanupScene(node: SKNode) {
-    for child in node.children as [SKNode] {
+    for child in node.children as! [SKNode] {
       cleanupScene(child)
     }
     node.removeFromParent()

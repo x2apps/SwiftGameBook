@@ -8,22 +8,36 @@ class ProgressLoaderNode: SKCropNode {
   private let ProgressMarkerScalar: CGFloat = 0.3
   
   required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+    // super.init(coder: aDecoder)
+    fatalError("This class doesn't support NSCoding.")
   }
   
   init (scene: SKScene) {
+    
+    // Add our moving marker
+    markerSprite = HeroNode(scene: scene, withPhysicsBody: false)
+    
+    // Add our progress background
+    let spriteAtlas = SKTextureAtlas(named: "Sprites")
+    
+    progressBarSprite = SKSpriteNode(texture: spriteAtlas.textureNamed("progress"))
+    
     super.init()
     
     xScale = scene.getSceneScaleX()
     yScale = scene.getSceneScaleY()
     
+    // Convert 8.3
     // Add our progress background
-    let spriteAtlas = SKTextureAtlas(named: "Sprites")
-    progressBarSprite = SKSpriteNode(texture: spriteAtlas.textureNamed("progress"))
+    // let spriteAtlas = SKTextureAtlas(named: "Sprites")
+    
+    // Convert 8.3
+    // progressBarSprite = SKSpriteNode(texture: spriteAtlas.textureNamed("progress"))
     self.addChild(progressBarSprite)
     
+    // Convert 8.3
     // Add our moving marker
-    markerSprite = HeroNode(scene: scene, withPhysicsBody: false)
+    // markerSprite = HeroNode(scene: scene, withPhysicsBody: false)
     
     // Let's scale our marker
     markerSprite.setScale(ProgressMarkerScalar)
