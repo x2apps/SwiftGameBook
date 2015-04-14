@@ -1,3 +1,8 @@
+Running on Xcode 6.3
+====================
+Game is now running on Xcode 6.3 and devices.
+
+
 Convert to Xcode 6.3 beta 3
 ===========================
 Converted to Xcode 6.3 beta 3 and running in simulator.
