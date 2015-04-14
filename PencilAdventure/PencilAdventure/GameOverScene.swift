@@ -30,8 +30,6 @@ public class GameOverScene: PaperScene {
     convertToSketch()
   }
   
-  // Convert 8.3
-  //public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
   public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
     for touch: AnyObject in touches {
       let node = self.nodeAtPoint(touch.locationInNode(self))

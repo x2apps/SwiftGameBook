@@ -79,14 +79,10 @@ class ImageTools {
     // Here is our bitmap array
     var data = [UInt8](count: heightPix * stride, repeatedValue: UInt8(0))
     
-    // Covert 8.3
-    // let colorSpace = CGColorSpaceCreateDeviceRGB()
     let colorSpace = CGColorSpaceCreateDeviceRGB()
     
     let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue | CGBitmapInfo.ByteOrderDefault.rawValue)
     
-    // Convert 8.3
-    //let contextRef = CGBitmapContextCreate(&data, UInt(widthPix), UInt(heightPix), 8, UInt(stride), colorSpace, bitmapInfo);
     let contextRef = CGBitmapContextCreate(&data, Int(widthPix), Int(heightPix), Int(8), Int(stride), colorSpace!, bitmapInfo)
     
     

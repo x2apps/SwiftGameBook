@@ -28,7 +28,7 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         addSteve()
         
         //add platform
-        let platform = SKSpriteNode(imageNamed: "wall")
+        let platform = SKSpriteNode(imageNamed: "wall.png")
         platform.name = "Wall"
         platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size)
         platform.physicsBody?.dynamic = false
@@ -105,7 +105,7 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
     
     private func movingSprites() {
         // Find our sprites at z=0
-        for child in self.children as [SKNode] {
+        for child in self.children as! [SKNode] {
             if let sprite = child as? SKSpriteNode {
                 if sprite.zPosition == 0 {
                     movingPlatformFromLevel(sprite)

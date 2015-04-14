@@ -213,8 +213,6 @@ public class GameScene : PaperScene, SKPhysicsContactDelegate, GameProtocol {
   
   public override func update(currentTime: CFTimeInterval) {}
   
-  // Convert 8.3
-  // public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
   public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
     // only jump when steve is running
     if (steveTheSprite.heroState == HeroState.Run) {
